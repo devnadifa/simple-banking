@@ -2,6 +2,7 @@ import java.util.Scanner;
 public class Main {
   static Scanner scanner = new Scanner(System.in);
   public static void main (String[] args) {
+
     //STEPS FOR SIMPLE BACKING PROGRAM
 
     //DECLARE VARIABLES
@@ -27,17 +28,17 @@ public class Main {
       switch (choice) {
         case 1 -> showBalance(balance);
         case 2 -> balance += deposit();
-        case 3 -> System.out.println("WITHDRAW");
+        case 3 -> balance -= withdraw(balance);
         case 4 -> isRunnig = false ;  
         default -> System.out.println("INVALID CHOICE");
 
       }
     }
-    //deposit()
-
-    //withdraw()
 
     //EXIT MESSAGE
+    System.out.println("*****************");
+    System.out.println("Thank you have a nice day!");
+    System.out.println("*****************");
 
     scanner.close();
 
@@ -56,6 +57,21 @@ public class Main {
       return 0;
     } else {
       return amount;
+    }
+  }
+  
+  static double withdraw(double balance) {
+    double amount;
+    System.out.print("Enter amount to be withdrawn: ");
+    amount = scanner.nextDouble();
+    if(amount > balance) {
+      System.out.println("Insufficient funds");
+      return 0;
+    } else if (amount < 0) {
+      System.out.println("Amount cant be negative");
+      return 0;
+    } else {
+    return amount;
     }
   }
 
